@@ -52,9 +52,16 @@ if __name__=="__main__":
             PrintFinish=False
         def MultiThreadingUI():
             global PrintFinish,TimeStart
+            Loop=["-","\\","|","/"]
+            Stat=0
             while True:
-                stdout(str(default_timer()-TimeStart)+"\r")
+                stdout("%c%s\r"%(Loop[Stat],str(default_timer()-TimeStart)))
+                if Stat==3:
+                    Stat=0
+                else:
+                    Stat+=1
                 if not PrintFinish:
+                    stdout(str(default_timer()-TimeStart))
                     if PrintData=="__stop__":
                         exit()
                     stdout("\n%s\n"%PrintData)
